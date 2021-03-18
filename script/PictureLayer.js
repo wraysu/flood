@@ -31,7 +31,7 @@ require({
         };
       });
     }, 'esri/layers/mixins/ArcGISMapService': function() {
-      define('require exports core/tsSupport/declareExtendsHelper core/tsSupport/decorateHelper esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/SpatialReference esri/layers/support/commonProperties'.split(' '), function(r, l, p, b, a, u, f, k) {
+      define('require exports core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/SpatialReference esri/layers/support/commonProperties'.split(' '), function(r, l, p, b, a, u, f, k) {
         Object.defineProperty(l, '__esModule', { value: !0 });
         l.ArcGISMapService = function(m) {
           return function(m) {
@@ -113,7 +113,7 @@ require({
         };
       });
     }, 'esri/layers/mixins/SublayersOwner': function() {
-      define('require exports core/tsSupport/assignHelper core/tsSupport/declareExtendsHelper core/tsSupport/decorateHelper esri/core/Collection esri/core/CollectionFlattener esri/core/Error esri/core/lang esri/core/Logger esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/PropertyOrigin esri/layers/support/Sublayer esri/layers/support/sublayerUtils'.split(' '),
+      define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/Collection esri/core/CollectionFlattener esri/core/Error esri/core/lang esri/core/Logger esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/PropertyOrigin esri/layers/support/Sublayer esri/layers/support/sublayerUtils'.split(' '),
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x) {
           function v(a, b, e) {
             var f = [], q = {};
@@ -279,7 +279,7 @@ require({
           };
         });
     }, 'esri/layers/support/Sublayer': function() {
-      define('require exports core/tsSupport/declareExtendsHelper core/tsSupport/decorateHelper core/tsSupport/paramHelper core/tsSupport/generatorHelper core/tsSupport/awaiterHelper esri/PopupTemplate esri/renderers esri/symbols esri/core/Collection esri/core/Error esri/core/JSONSupport esri/core/lang esri/core/Logger esri/core/promiseUtils esri/core/urlUtils esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/write esri/layers/support/commonProperties esri/layers/support/LabelClass esri/layers/support/layerSourceUtils esri/renderers/support/jsonUtils esri/tasks/support/Query'.split(' '),
+      define('require exports core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/PopupTemplate esri/renderers esri/symbols esri/core/Collection esri/core/Error esri/core/JSONSupport esri/core/lang esri/core/Logger esri/core/promiseUtils esri/core/urlUtils esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/write esri/layers/support/commonProperties esri/layers/support/LabelClass esri/layers/support/layerSourceUtils esri/renderers/support/jsonUtils esri/tasks/support/Query'.split(' '),
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t) {
           var B = x.getLogger('esri.layers.support.Sublayer'), H = 0;
           return function(a) {
@@ -805,7 +805,7 @@ require({
         };
       });
     }, 'esri/layers/support/ExportImageParameters': function() {
-      define('require exports core/tsSupport/assignHelper core/tsSupport/declareExtendsHelper core/tsSupport/decorateHelper esri/core/Accessor esri/core/accessorSupport/decorators esri/layers/support/sublayerUtils esri/layers/support/timeUtils esri/views/View'.split(' '), function(r, l, p, b, a, u, f, k, m, w) {
+      define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/Accessor esri/core/accessorSupport/decorators esri/layers/support/sublayerUtils esri/layers/support/timeUtils esri/views/View'.split(' '), function(r, l, p, b, a, u, f, k, m, w) {
         Object.defineProperty(l, '__esModule', { value: !0 });
         var h = {
           visible: 'visibleSublayers',
@@ -954,7 +954,7 @@ require({
 /**
  * 构造时要示填写属性有url，spatialRefrence，extent，units
  */
-define('require exports core/tsSupport/assignHelper core/tsSupport/declareExtendsHelper core/tsSupport/decorateHelper core/tsSupport/paramHelper core/tsSupport/generatorHelper core/tsSupport/awaiterHelper esri/request esri/core/Error esri/core/maybe esri/core/MultiOriginJSONSupport esri/core/promiseUtils esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/support/scaleUtils esri/layers/Layer esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/TemporalLayer esri/layers/support/commonProperties esri/layers/support/ExportImageParameters esri/geometry/support/webMercatorUtils'.split(' '),
+define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/request esri/core/Error esri/core/maybe esri/core/MultiOriginJSONSupport esri/core/promiseUtils esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/support/scaleUtils esri/layers/Layer esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/TemporalLayer esri/layers/support/commonProperties esri/layers/support/ExportImageParameters esri/geometry/support/webMercatorUtils'.split(' '),
   function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t, B, H, webMercatorUtils) {
     return function(e) {
       function c(a, b) {
