@@ -18,7 +18,7 @@ require([
       layers: [layer]
     });
 
-    const view = new MapView({
+    const view = new SceneView({
       map: map,
       container: "viewDiv",
       zoom: 4,
