@@ -113,11 +113,7 @@ require({
         };
       });
     }, 'esri/layers/mixins/SublayersOwner': function() {
-<<<<<<< HEAD
-      define('require exports esri/core/tsSupport/assignHelper esri/core/tsSupport/declareExtendsHelper esri/core/tsSupport/decorateHelper esri/core/Collection esri/core/CollectionFlattener esri/core/Error esri/core/lang esri/core/Logger esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/PropertyOrigin esri/layers/support/Sublayer esri/layers/support/sublayerUtils'.split(' '),
-=======
       define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/Collection esri/core/CollectionFlattener esri/core/Error esri/core/lang esri/core/Logger esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/PropertyOrigin esri/layers/support/Sublayer esri/layers/support/sublayerUtils'.split(' '),
->>>>>>> d9a09c0f913e75fe5ff94a1096fd15680278622b
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x) {
           function v(a, b, e) {
             var f = [], q = {};
