@@ -2,7 +2,7 @@ require([
     "esri/Map",
     "esri/views/MapView",
     "esri/views/SceneView",
-    "esri/layers/FeatureLayer",
+    "../esri/layers/FeatureLayer",
     "extras/PictureLayer",
     "esri/widgets/TimeSlider",
     "esri/widgets/Expand",
