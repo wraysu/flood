@@ -3,7 +3,7 @@ require([
     "esri/views/MapView",
     "esri/views/SceneView",
     "esri/layers/FeatureLayer",
-    "./script/PictureLayer",
+    "js/PictureLayer",
     "esri/widgets/TimeSlider",
     "esri/widgets/Expand",
     "esri/widgets/Legend"

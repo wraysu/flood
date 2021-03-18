@@ -1,6 +1,6 @@
 var dojoConfig = {
     paths: {
-        extras: "./esri/layers"
+        js: "/script"
     },
     parseOnLoad: false,
     async: false
