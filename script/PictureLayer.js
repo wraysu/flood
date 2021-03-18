@@ -279,7 +279,7 @@ require({
           };
         });
     }, 'esri/layers/support/Sublayer': function() {
-      define('require exports core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/PopupTemplate esri/renderers esri/symbols esri/core/Collection esri/core/Error esri/core/JSONSupport esri/core/lang esri/core/Logger esri/core/promiseUtils esri/core/urlUtils esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/write esri/layers/support/commonProperties esri/layers/support/LabelClass esri/layers/support/layerSourceUtils esri/renderers/support/jsonUtils esri/tasks/support/Query'.split(' '),
+      define('require exports core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/PopupTemplate esri/renderers esri/symbols esri/core/Collection esri/core/Error esri/core/JSONSupport esri/core/lang esri/core/Logger core1/promiseUtils esri/core/urlUtils esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/write esri/layers/support/commonProperties esri/layers/support/LabelClass esri/layers/support/layerSourceUtils esri/renderers/support/jsonUtils esri/tasks/support/Query'.split(' '),
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t) {
           var B = x.getLogger('esri.layers.support.Sublayer'), H = 0;
           return function(a) {
@@ -954,7 +954,7 @@ require({
 /**
  * 构造时要示填写属性有url，spatialRefrence，extent，units
  */
-define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/request esri/core/Error esri/core/maybe esri/core/MultiOriginJSONSupport esri/core/promiseUtils esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/support/scaleUtils esri/layers/Layer esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/TemporalLayer esri/layers/support/commonProperties esri/layers/support/ExportImageParameters esri/geometry/support/webMercatorUtils'.split(' '),
+define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/request esri/core/Error esri/core/maybe esri/core/MultiOriginJSONSupport core1/promiseUtils esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/support/scaleUtils esri/layers/Layer esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/TemporalLayer esri/layers/support/commonProperties esri/layers/support/ExportImageParameters esri/geometry/support/webMercatorUtils'.split(' '),
   function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t, B, H, webMercatorUtils) {
     return function(e) {
       function c(a, b) {
