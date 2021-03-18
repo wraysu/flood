@@ -1,6 +1,6 @@
 var dojoConfig = {
     paths: {
-        js: "/script"
+        js: "/flood/script"
     },
     parseOnLoad: false,
     async: false
