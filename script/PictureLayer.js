@@ -805,7 +805,7 @@ require({
         };
       });
     }, 'esri/layers/support/ExportImageParameters': function() {
-      define('require exports esri/core/tsSupport/assignHelper esri/core/tsSupport/declareExtendsHelper esri/core/tsSupport/decorateHelper esri/core/Accessor esri/core/accessorSupport/decorators esri/layers/support/sublayerUtils esri/layers/support/timeUtils esri/views/View'.split(' '), function(r, l, p, b, a, u, f, k, m, w) {
+      define('require exports esri/layers/vectorTiles/core/tsSupport/assignHelper esri/core/tsSupport/declareExtendsHelper esri/core/tsSupport/decorateHelper esri/core/Accessor esri/core/accessorSupport/decorators esri/layers/support/sublayerUtils esri/layers/support/timeUtils esri/views/View'.split(' '), function(r, l, p, b, a, u, f, k, m, w) {
         Object.defineProperty(l, '__esModule', { value: !0 });
         var h = {
           visible: 'visibleSublayers',
@@ -954,7 +954,7 @@ require({
 /**
  * 构造时要示填写属性有url，spatialRefrence，extent，units
  */
-define('require exports esri/core/tsSupport/assignHelper esri/core/tsSupport/declareExtendsHelper esri/core/tsSupport/decorateHelper esri/core/tsSupport/paramHelper esri/core/tsSupport/generatorHelper esri/core/tsSupport/awaiterHelper esri/request esri/core/Error esri/core/maybe esri/core/MultiOriginJSONSupport esri/core/promiseUtils esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/support/scaleUtils esri/layers/Layer esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/TemporalLayer esri/layers/support/commonProperties esri/layers/support/ExportImageParameters esri/geometry/support/webMercatorUtils'.split(' '),
+define('require exports esri/layers/vectorTiles/core/tsSupport/assignHelper esri/core/tsSupport/declareExtendsHelper esri/core/tsSupport/decorateHelper esri/core/tsSupport/paramHelper esri/core/tsSupport/generatorHelper esri/core/tsSupport/awaiterHelper esri/request esri/core/Error esri/core/maybe esri/core/MultiOriginJSONSupport esri/core/promiseUtils esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/support/scaleUtils esri/layers/Layer esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/TemporalLayer esri/layers/support/commonProperties esri/layers/support/ExportImageParameters esri/geometry/support/webMercatorUtils'.split(' '),
   function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t, B, H, webMercatorUtils) {
     return function(e) {
       function c(a, b) {
