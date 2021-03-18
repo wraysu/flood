@@ -1,6 +1,7 @@
 var dojoConfig = {
     paths: {
-        js: "/flood/script"
+        js: "/flood/script",
+        core:"/flood/esri/core"
     },
     parseOnLoad: false,
     async: false
