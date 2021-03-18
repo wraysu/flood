@@ -1,11 +1,13 @@
 require([
     "esri/Map",
     "esri/views/MapView",
+    "esri/views/SceneView",
     "esri/layers/FeatureLayer",
+    "extras/PictureLayer",
     "esri/widgets/TimeSlider",
     "esri/widgets/Expand",
     "esri/widgets/Legend"
-  ], function (Map, MapView, FeatureLayer, TimeSlider, Expand, Legend) {
+  ], function (Map, MapView, SceneView, FeatureLayer, PictureLayer,TimeSlider, Expand, Legend) {
     const layer = new FeatureLayer({
       url:
         "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/NDFD_Precipitation_v1/FeatureServer/0"
