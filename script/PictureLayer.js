@@ -279,7 +279,7 @@ require({
           };
         });
     }, 'esri/layers/support/Sublayer': function() {
-      define('require exports esri/core/tsSupport/declareExtendsHelper esri/core/tsSupport/decorateHelper esri/core/tsSupport/paramHelper esri/core/tsSupport/generatorHelper esri/core/tsSupport/awaiterHelper esri/PopupTemplate esri/renderers esri/symbols esri/core/Collection esri/core/Error esri/core/JSONSupport esri/core/lang esri/core/Logger esri/core/promiseUtils esri/core/urlUtils esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/write esri/layers/support/commonProperties esri/layers/support/LabelClass esri/layers/support/layerSourceUtils esri/renderers/support/jsonUtils esri/tasks/support/Query'.split(' '),
+      define('require exports esri/core/tsSupport/declareExtendsHelper esri/core/tsSupport/decorateHelper esri/core/tsSupport/paramHelper esri/layers/vectorTiles/core/tsSupport/generatorHelper esri/core/tsSupport/awaiterHelper esri/PopupTemplate esri/renderers esri/symbols esri/core/Collection esri/core/Error esri/core/JSONSupport esri/core/lang esri/core/Logger esri/core/promiseUtils esri/core/urlUtils esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/write esri/layers/support/commonProperties esri/layers/support/LabelClass esri/layers/support/layerSourceUtils esri/renderers/support/jsonUtils esri/tasks/support/Query'.split(' '),
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t) {
           var B = x.getLogger('esri.layers.support.Sublayer'), H = 0;
           return function(a) {
