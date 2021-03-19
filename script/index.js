@@ -31,6 +31,7 @@ require([
   const timeSlider = new TimeSlider({
     container: "timeSlider",
     view: view,
+    mode: "instant",
     timeVisible: true, // show the time stamps on the timeslider
     fullTimeExtent: { // entire extent of the timeSlider
       start: new Date(2019, 6, 22, 5),
