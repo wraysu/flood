@@ -21,7 +21,7 @@ require([
     const view = new SceneView({
       map: map,
       container: "viewDiv",
-      zoom: 4,
+      zoom: 8,
       center: [121, 23]
     });
 
