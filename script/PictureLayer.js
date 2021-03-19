@@ -278,7 +278,7 @@ require({
             }(h.declared(m));
           };
         });
-    }/*, 'esri/layers/support/Sublayer': function() {
+    }, 'esri/layers/support/Sublayer': function() {
       define('require exports core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/PopupTemplate esri/renderers esri/symbols esri/core/Collection esri/core/Error esri/core/JSONSupport esri/core/lang esri/core/Logger esri/core/promiseUtils esri/core/urlUtils esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/write esri/layers/support/commonProperties esri/layers/support/LabelClass esri1/layers/support/layerSourceUtils esri/renderers/support/jsonUtils esri/tasks/support/Query'.split(' '),
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t) {
           var B = x.getLogger('esri.layers.support.Sublayer'), H = 0;
@@ -804,7 +804,7 @@ require({
           });
         };
       });
-    }, 'esri/layers/support/ExportImageParameters': function() {
+    }/*, 'esri/layers/support/ExportImageParameters': function() {
       define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/Accessor esri/core/accessorSupport/decorators esri/layers/support/sublayerUtils esri/layers/support/timeUtils esri/views/View'.split(' '), function(r, l, p, b, a, u, f, k, m, w) {
         Object.defineProperty(l, '__esModule', { value: !0 });
         var h = {
