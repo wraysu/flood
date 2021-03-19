@@ -86,6 +86,7 @@ require([
     var grapherLayer = addPictureLayer1("flood" + dt, url);
     view.map.layers.add(grapherLayer);
     if (currLayer) {
+      console.log("remove")
       setTimeout(function () { view.map.layers.remove(currLayer); }, 500)
     }
   }
