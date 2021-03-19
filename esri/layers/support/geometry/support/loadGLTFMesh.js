@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/tsSupport/assignHelper","../../core/maybe","../../core/libs/gl-matrix-2/mat3","../../core/libs/gl-matrix-2/mat3f64","../../core/libs/gl-matrix-2/vec3f64","../../core/libs/gl-matrix-2/vec4f64","./MeshMaterialMetallicRoughness","./MeshTexture","./meshUtils/georeference","../../views/3d/glTF/DefaultLoadingContext","../../views/3d/glTF/loader","../../views/3d/glTF/internal/indexUtils","../../views/3d/support/buffer/BufferView","../../views/3d/support/buffer/math","../../views/3d/support/buffer/utils","../../views/3d/webgl-engine/materials/DefaultMaterial"],(function(e,t,r,a,n,o,u,i,c,f,s,l,p,m,v,w,g,d,h,V){function B(e){switch(e){case"OPAQUE":return"opaque";case"MASK":return"mask";case"BLEND":return"blend"}}function b(e){switch(e){case 33071:return"clamp";case 33648:return"mirror";case 10497:return"repeat"}}function x(e){return 255*Math.pow(e,1/V.COLOR_GAMMA)}Object.defineProperty(t,"__esModule",{value:!0}),t.loadGLTFMesh=function(e,t,V){return a(this,void 0,void 0,(function(){var a,M,y,S,T,F;return r(this,(function(r){switch(r.label){case 0:return a=new m.DefaultLoadingContext,[4,v.load(a,t,V)];case 1:return M=r.sent(),y=M.model,S=y.lods.shift(),T=new Map,F=new Map,y.textures.forEach((function(e,t){return T.set(t,new l({data:(r=e).data,wrap:(a=r.parameters.wrap,{horizontal:b(a.s),vertical:b(a.t)})}));var r,a})),y.materials.forEach((function(e,t){return F.set(t,function(e,t){var r=(u=e.color,i=e.opacity,f.vec4f64.fromValues(x(u[0]),x(u[1]),x(u[2]),i)),a=e.emissiveFactor?function(e){return c.vec3f64.fromValues(x(e[0]),x(e[1]),x(e[2]))}(e.emissiveFactor):null,n={color:r,colorTexture:o.unwrap(o.applySome(e.textureColor,(function(e){return t.get(e)}))),normalTexture:o.unwrap(o.applySome(e.textureNormal,(function(e){return t.get(e)}))),emissiveColor:a,emissiveTexture:o.unwrap(o.applySome(e.textureEmissive,(function(e){return t.get(e)}))),occlusionTexture:o.unwrap(o.applySome(e.textureOcclusion,(function(e){return t.get(e)}))),alphaMode:B(e.alphaMode),alphaCutoff:e.alphaCutoff,doubleSided:e.doubleSided,metallic:e.metallicFactor,roughness:e.roughnessFactor,metallicRoughnessTexture:o.unwrap(o.applySome(e.textureMetallicRoughness,(function(e){return t.get(e)})))};var u,i;return new s(n)}(e,T))})),[2,S.parts.map((function(t){return function(e,t,r,a){var c=h.createBuffer(g.BufferViewVec3f64,r.attributes.position.count);d.vec3.transformMat4(c,r.attributes.position,r.transform);var f=o.applySome(r.attributes.normal,(function(e){var t=h.createBuffer(g.BufferViewVec3f,e.count),a=u.mat3.normalFromMat4(i.mat3f64.create(),r.transform);return d.vec3.transformMat3(t,e,a),t.typedBuffer})),s=o.applySome(r.attributes.tangent,(function(e){var t=h.createBuffer(g.BufferViewVec4f,e.count),a=u.mat3.normalFromMat4(i.mat3f64.create(),r.transform);return d.vec4.transformMat3(t,e,a),t.typedBuffer})),l=o.applySome(r.attributes.texCoord0,(function(e){var t=h.createBuffer(g.BufferViewVec2f,e.count);return h.vec2.normalizeIntegerBuffer(t,e),t.typedBuffer})),m=o.applySome(r.attributes.color,(function(e){var t=h.createBuffer(g.BufferViewVec4u8,e.count);if(4===e.elementCount)e instanceof g.BufferViewVec4f?d.vec4.scale(t,e,255):e instanceof g.BufferViewVec4u8?h.vec4.copy(t,e):e instanceof g.BufferViewVec4u16&&d.vec4.shiftRight(t,e,8);else{h.vec4.fill(t,255,255,255,255);var r=new g.BufferViewVec3u8(t.buffer,0,4);e instanceof g.BufferViewVec3f?d.vec3.scale(r,e,255):e instanceof g.BufferViewVec3u8?h.vec3.copy(r,e):e instanceof g.BufferViewVec3u16&&d.vec3.shiftRight(r,e,8)}return t.typedBuffer})),v=p.georeference({position:c.typedBuffer,normal:o.unwrap(f),tangent:o.unwrap(s)},e,n({},a,{unit:"meters"})),V=function(e,t){switch(t){case 4:return w.trianglesToTriangles(e);case 5:return w.triangleStripToTriangles(e);case 6:return w.triangleFanToTriangles(e)}}(r.indices||r.attributes.position.count,r.primitiveType);return{vertexAttributes:{position:v.position,normal:v.normal,tangent:v.tangent,uv:o.unwrap(l),color:o.unwrap(m)},components:[{faces:V,material:t.get(r.material),trustSourceNormals:!0}],spatialReference:e.spatialReference}}(e,F,t,V)}))]}}))}))}}));
