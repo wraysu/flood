@@ -38,7 +38,7 @@ require([
 
     view.whenLayerView(layer).then(function (lv) {
       // around up the full time extent to full hour
-      timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent.expandTo("hours");
+      timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent;
     });
     const legend = new Legend({
       view: view
