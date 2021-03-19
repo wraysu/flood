@@ -30,7 +30,7 @@ require({
           return k.clone().expand(f * b / k.width);
         };
       });
-    }, 'esri/layers/mixins/ArcGISMapService': function() {
+    }/*, 'esri/layers/mixins/ArcGISMapService': function() {
       define('require exports core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/SpatialReference esri/layers/support/commonProperties'.split(' '), function(r, l, p, b, a, u, f, k) {
         Object.defineProperty(l, '__esModule', { value: !0 });
         l.ArcGISMapService = function(m) {
@@ -947,13 +947,14 @@ require({
         }(f.declared(u));
         l.ExportImageParameters = r;
       });
-    }, '*noref': 1,
+    }*/, '*noref': 1,
   },
 });
 
 /**
  * 构造时要示填写属性有url，spatialRefrence，extent，units
  */
+/*
 define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/request esri/core/Error esri/core/maybe esri/core/MultiOriginJSONSupport esri/core/promiseUtils esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/support/scaleUtils esri/layers/Layer esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/TemporalLayer esri/layers/support/commonProperties esri/layers/support/ExportImageParameters esri/geometry/support/webMercatorUtils'.split(' '),
   function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t, B, H, webMercatorUtils) {
     return function(e) {
@@ -1280,3 +1281,4 @@ define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExte
       return c = a([d.subclass('esri.layers.PictureLayer')], c);
     }(d.declared(t.TemporalLayer(q.ScaleRangeLayer(F.RefreshableLayer(G.SublayersOwner(e.ArcGISMapService(D.ArcGISService(E.OperationalLayer(n.PortalLayer(A.MultiOriginJSONMixin(y)))))))))));
   });
+  */
