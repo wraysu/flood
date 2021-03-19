@@ -112,7 +112,7 @@ require({
           }(a.declared(m));
         };
       });
-    }/*, 'esri/layers/mixins/SublayersOwner': function() {
+    }, 'esri/layers/mixins/SublayersOwner': function() {
       define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/Collection esri/core/CollectionFlattener esri/core/Error esri/core/lang esri/core/Logger esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/PropertyOrigin esri/layers/support/Sublayer esri/layers/support/sublayerUtils'.split(' '),
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x) {
           function v(a, b, e) {
@@ -278,7 +278,7 @@ require({
             }(h.declared(m));
           };
         });
-    }, 'esri/layers/support/Sublayer': function() {
+    }/*, 'esri/layers/support/Sublayer': function() {
       define('require exports core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/PopupTemplate esri/renderers esri/symbols esri/core/Collection esri/core/Error esri/core/JSONSupport esri/core/lang esri/core/Logger esri/core/promiseUtils esri/core/urlUtils esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/write esri/layers/support/commonProperties esri/layers/support/LabelClass esri1/layers/support/layerSourceUtils esri/renderers/support/jsonUtils esri/tasks/support/Query'.split(' '),
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t) {
           var B = x.getLogger('esri.layers.support.Sublayer'), H = 0;
