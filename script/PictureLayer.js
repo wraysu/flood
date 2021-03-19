@@ -4,7 +4,7 @@
 require({
   cache: {
     'esri/geometry/support/scaleUtils': function() {
-      define(['require', 'exports', 'esri/config', 'esri/core/unitUtils'], function(r, l, p, b) {
+      define(['require', 'exports', 'esri/config', 'esri1/core/unitUtils'], function(r, l, p, b) {
         function a(a, f) {
           f = b.getMetersPerUnitForSR(f);
           return a / (f * b.inchesPerMeter * p.screenDPI);
