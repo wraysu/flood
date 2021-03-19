@@ -68,6 +68,17 @@ require([
     view.ui.add(legendExpand, "top-left");
   });
 
+  timeSlider.watch("timeExtent", function(value){
+    var dt = (new Date(value.end).getTime() - new Date(2019, 6, 22,4).getTime()) / (60*60*1000)
+    console.log(dt)
+
+    var past =  parseInt((pastSliderTime - new Date(2019, 6, 22,4).getTime()) / (60*60*1000))
+  //	var t = 11950013000 + 10000 * dt
+    var url = "https://winds.ncdr.nat.gov.tw/data/flood/Frame_" + dt  + ".png";
+    addFloodingLayer(url ,past, dt)
+    pastSliderTime = (new Date(value.end).getTime());
+  })
+
   function addFloodingLayer(url,past,dt){
     var pt = ((dt-1) == 0)?24: (dt-1);  
     var currLayer = view.map.findLayerById("flood" + past);				
