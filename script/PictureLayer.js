@@ -763,7 +763,7 @@ require({
           }(e.declared(g.JSONSupport));
         });
     }, 'esri/layers/support/sublayerUtils': function() {
-      define(['require', 'exports', 'esri/layers/support/layerSourceUtils'], function(r, l, p) {
+      define(['require', 'exports', 'esri1/layers/support/layerSourceUtils'], function(r, l, p) {
         function b(a, b) {
           function f(a) {
             var b = a.sublayers;
