@@ -804,7 +804,7 @@ require({
           });
         };
       });
-    }/*, 'esri/layers/support/ExportImageParameters': function() {
+    }, 'esri/layers/support/ExportImageParameters': function() {
       define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/Accessor esri/core/accessorSupport/decorators esri/layers/support/sublayerUtils esri/layers/support/timeUtils esri/views/View'.split(' '), function(r, l, p, b, a, u, f, k, m, w) {
         Object.defineProperty(l, '__esModule', { value: !0 });
         var h = {
@@ -947,7 +947,7 @@ require({
         }(f.declared(u));
         l.ExportImageParameters = r;
       });
-    }*/, '*noref': 1,
+    }, '*noref': 1,
   },
 });
 
