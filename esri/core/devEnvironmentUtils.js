@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./global"],(function(c,t){"use strict";const e=/^devext.arcgis.com$/,a=/^qaext.arcgis.com$/,n=/^[\w-]*\.mapsdevext.arcgis.com$/,o=/^[\w-]*\.mapsqa.arcgis.com$/,r=[/^([\w-]*\.)?[\w-]*\.zrh-dev-local.esri.com$/,e,a,/^jsapps.esri.com$/,n,o];c.adjustStaticAGOUrl=function(c,r){return c&&(r=r||t.location.hostname)?null!=r.match(e)||null!=r.match(n)?c.replace("static.arcgis.com","staticdev.arcgis.com"):null!=r.match(a)||null!=r.match(o)?c.replace("static.arcgis.com","staticqa.arcgis.com"):c:c},c.isDevEnvironment=function(c){return c=c||t.location.hostname,r.some((t=>{var e;return null!=(null==(e=c)?void 0:e.match(t))}))},c.isTelemetryDevEnvironment=function(c){return c=c||t.location.hostname,[/^zrh-.+?\.esri\.com$/].concat(r).some((t=>{var e;return null!=(null==(e=c)?void 0:e.match(t))}))},Object.defineProperty(c,"__esModule",{value:!0})}));
