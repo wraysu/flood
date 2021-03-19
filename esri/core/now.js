@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./object","@dojo/framework/shim/string"],(function(e,t,r,n){Object.defineProperty(t,"__esModule",{value:!0});var a=/\{([^\}]+)\}/g;t.endsWith=n.endsWith,t.startsWith=n.startsWith,t.padEnd=n.padEnd,t.padStart=n.padStart,t.replace=function(e,t){return e.replace(a,"object"==typeof t?function(e,n){return r.getDeepValue(n,t)}:function(e,r){return t(r)})},t.escapeRegExpString=function(e,t){return e.replace(/([\.$?*|{}\(\)\[\]\\\/\+\-^])/g,(function(e){return t&&-1!==t.indexOf(e)?e:"\\"+e}))},t.numericHash=function(e){for(var t=0,r=0;r<e.length;r++)t=(t<<5)-t+e.charCodeAt(r),t|=0;return t}}));
+define(["require","exports","./global"],(function(n,t,r){return function(){var n,t=r.performance||{};if(t){if(t.now)return function(){return t.now()};if(t.webkitNow)return function(){return t.webkitNow()};if(t.mozNow)return function(){return t.mozNow()};if(t.msNow)return function(){return t.msNow()};if(t.oNow)return function(){return t.oNow()}}return n=t.timing&&t.timing.navigationStart?t.timing.navigationStart:Date.now(),function(){return Date.now()-n}}()}));

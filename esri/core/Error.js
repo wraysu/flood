@@ -1,5 +1,25 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
-*/
-define(["../chunks/_rollupPluginBabelHelpers","./lang","./Logger","./Message"],(function(e,t,r,s){"use strict";let i=function(s){function i(t,r,n){var a;return a=s.call(this,t,r,n)||this,e._assertThisInitialized(a)instanceof i?a:new i(t,r,n)||e._assertThisInitialized(a)}return e._inheritsLoose(i,s),i.prototype.toJSON=function(){if(null!=this.details)try{return{name:this.name,message:this.message,details:JSON.parse(JSON.stringify(this.details,((e,r)=>{if(r&&"object"==typeof r&&"function"==typeof r.toJSON)return r;try{return t.clone(r)}catch(e){return"[object]"}})))}}catch(e){throw r.getLogger("esri.core.Error").error(e),e}return{name:this.name,message:this.message,details:this.details}},i.fromJSON=function(e){return new i(e.name,e.message,e.details)},i}(s);return i.prototype.type="error",i}));
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","./tsSupport/extendsHelper","./lang","./Logger","./Message"],(function(e,t,r,o,s,n){var i=function(e){function t(r,o,s){var n=e.call(this,r,o,s)||this;return n instanceof t?n:new t(r,o,s)}return r(t,e),t.prototype.toJSON=function(){if(null!=this.details)try{var e=o.clone(this.details);return{name:this.name,message:this.message,details:e,dojoType:this.dojoType}}catch(e){throw s.getLogger("esri.core.Error").error(e),e}return{name:this.name,message:this.message,details:this.details,dojoType:this.dojoType}},t.fromJSON=function(e){var r=new t(e.name,e.message,e.details);return null!=e.dojoType&&(r.dojoType=e.dojoType),r},t}(n);return i.prototype.type="error",i}));

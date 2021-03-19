@@ -1,5 +1,25 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
-*/
-define(["../chunks/_rollupPluginBabelHelpers"],(function(t){"use strict";let n=function(){function n(t,n=.9){this._alpha=.9,this._startTime=0,this._count=0,this._sum=0,this._smooth=0,this._min=0,this._max=0,this._name=t,this._alpha=n,this.reset()}var i=n.prototype;return i.reset=function(){this._count=0,this._sum=0,this._smooth=0,this._min=1/0,this._max=0},i.begin=function(){this._startTime=performance.now()},i.end=function(){const t=performance.now()-this._startTime;this._count+=1,this._sum+=t,this._smooth=this._alpha*t+(1-this._alpha)*this._smooth,this._min=Math.min(this._min,t),this._max=Math.max(this._max,t)},i.toJSON=function(){return{name:this.name,count:this.count,average:this.average,smooth:this.smooth,min:this.min,max:this.max}},t._createClass(n,[{key:"name",get:function(){return this._name}},{key:"count",get:function(){return this._count}},{key:"average",get:function(){return this._count>0?this._sum/this._count:0}},{key:"smooth",get:function(){return this._smooth}},{key:"min",get:function(){return this._min}},{key:"max",get:function(){return this._max}}]),n}();return function(t){const n={},i={};function s(i){return i in n||(n[i]=new t(i)),n[i]}function e(t){console.log(s(t).toJSON())}t.get=s,t.begin=function(t){s(t).begin()},t.end=function(t,n=!0){s(t).end();const o=performance.now();n&&(!(t in i)||o>=i[t]+1e3)&&(e(t),i[t]=o)},t.log=e,t.logAll=function(){for(const t in n)e(t)}}(n||(n={})),n}));
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports"],(function(t,e){var n=function(){function t(t,e){void 0===e&&(e=.9),this._alpha=.9,this._name=t,this._alpha=e,this.reset()}return t.prototype.reset=function(){this._count=0,this._sum=0,this._smooth=0,this._min=1/0,this._max=0},Object.defineProperty(t.prototype,"name",{get:function(){return this._name},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"count",{get:function(){return this._count},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"average",{get:function(){return this._count>0?this._sum/this._count:0},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"smooth",{get:function(){return this._smooth},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"min",{get:function(){return this._min},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"max",{get:function(){return this._max},enumerable:!0,configurable:!0}),t.prototype.begin=function(){this._startTime=performance.now()},t.prototype.end=function(){var t=performance.now()-this._startTime;this._count+=1,this._sum+=t,this._smooth=this._alpha*t+(1-this._alpha)*this._smooth,this._min=Math.min(this._min,t),this._max=Math.max(this._max,t)},t.prototype.toJSON=function(){return{name:this.name,count:this.count,average:this.average,smooth:this.smooth,min:this.min,max:this.max}},t}();return function(t){var e={},n={};function o(n){return n in e||(e[n]=new t(n)),e[n]}function i(t){console.log(o(t).toJSON())}t.get=o,t.begin=function(t){o(t).begin()},t.end=function(t,e){void 0===e&&(e=!0),o(t).end();var r=performance.now();!e||t in n&&!(r>=n[t]+1e3)||(i(t),n[t]=r)},t.log=i,t.logAll=function(){for(var t in e)i(t)}}(n||(n={})),n}));

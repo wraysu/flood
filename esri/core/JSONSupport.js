@@ -1,5 +1,25 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
-*/
-define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./accessorSupport/decorators/subclass","./Accessor","./accessorSupport/read","./accessorSupport/write"],(function(r,t,e,o,n,s,i){"use strict";const u=r=>{let n=function(r){function e(...t){return r.call(this,...t)||this}t._inheritsLoose(e,r);var o=e.prototype;return o.read=function(r,t){s.read(this,r,t)},o.write=function(r={},t){return i.write(this,r,t)},o.toJSON=function(r){return this.write({},r)},e.fromJSON=function(r,t){return c.call(this,r,t)},e}(r);return n=e.__decorate([o.subclass("esri.core.JSONSupport")],n),n.prototype.toJSON.isDefaultToJSON=!0,n};function c(r,t){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");const e=new this;return e.read(r,t),e}r.JSONSupport=function(r){function e(){return r.apply(this,arguments)||this}return t._inheritsLoose(e,r),e}(u(n)),r.JSONSupport=e.__decorate([o.subclass("esri.core.JSONSupport")],r.JSONSupport),r.JSONSupportMixin=u,r.isJSONSupport=function(r){return r&&"read"in r&&"write"in r&&"toJSON"in r},Object.defineProperty(r,"__esModule",{value:!0})}));
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./Accessor","./declare","./accessorSupport/decorators","./accessorSupport/read","./accessorSupport/write"],(function(r,t,e,o,n,u,i,p,c){function s(r,t){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var e=new this;return e.read(r,t),e}function a(r){return r&&"read"in r&&"write"in r&&"toJSON"in r}Object.defineProperty(t,"__esModule",{value:!0}),t.JSONSupportMixin=function(r){var t=function(r){function t(){for(var t=[],e=0;e<arguments.length;e++)t[e]=arguments[e];return r.apply(this,t)||this}return e(t,r),t.prototype.read=function(r,t){p.default(this,r,t)},t.prototype.write=function(r,t){return c.default(this,r||{},t)},t.prototype.toJSON=function(r){return this.write(null,r)},t.fromJSON=function(r,t){return s.call(this,r,t)},t=o([i.subclass("esri.core.JSONSupport")],t)}(i.declared(r));return t.prototype.toJSON.isDefaultToJSON=!0,t},t.isJSONSupport=a,u.after((function(r){for(var t=r.prototype;;){if(a(t))return void(r.fromJSON=s.bind(r));if(!(t=Object.getPrototypeOf(t)))return}}));var f=function(r){function t(){return null!==r&&r.apply(this,arguments)||this}return e(t,r),t=o([i.subclass("esri.core.JSONSupport")],t)}(i.declared(t.JSONSupportMixin(n)));t.JSONSupport=f}));

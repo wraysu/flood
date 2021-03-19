@@ -1,5 +1,25 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
-*/
-define(["exports","./maybe"],(function(e,t){"use strict";e.writeCookie=function(e,o,n={}){let i=t.assumeNonNull(n.expires);if("number"==typeof i){const e=new Date;e.setTime(e.getTime()+24*i*60*60*1e3),i=n.expires=e}"string"!=typeof i&&(n.expires=i.toUTCString());let s=e+"="+encodeURIComponent(o);for(const e in n){s+="; "+e;const t=n[e];!0!==t&&(s+="="+t)}document.cookie=s},Object.defineProperty(e,"__esModule",{value:!0})}));
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports"],(function(e,i){Object.defineProperty(i,"__esModule",{value:!0}),i.writeCookie=function(e,i,o){void 0===o&&(o={});var r=o.expires;if("number"==typeof r){var t=new Date;t.setTime(t.getTime()+24*r*60*60*1e3),r=o.expires=t}"string"!=typeof r&&(o.expires=r.toUTCString());var n=e+"="+encodeURIComponent(i);for(var f in o){n+="; "+f;var p=o[f];!0!==p&&(n+="="+p)}document.cookie=n}}));

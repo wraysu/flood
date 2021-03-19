@@ -1,5 +1,25 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
-*/
-define(["exports","./string","../intl/number","./mathUtils","./unitUtils"],(function(t,r,e,n,i){"use strict";function o(t,r,e){return t.units[r][e]}function a(t,r,n,i=2,a="abbr"){return`${e.formatNumber(r,{minimumFractionDigits:i,maximumFractionDigits:i})} ${o(t,n,a)}`}function c(t,r,e=2){return`${i.convertUnit(t,r,"degrees").toFixed(e)}°`}const m=["B","kB","MB","GB","TB"];t.formatAngleDegrees=c,t.formatDMS=function(t,r,e=2){let n=i.convertUnit(t,r,"degrees"),o=n-Math.floor(n);n-=o,o*=60;let a=o-Math.floor(o);return o-=a,a*=60,`${n.toFixed()}° ${o.toFixed()}' ${a.toFixed(e)}"`},t.formatDecimal=a,t.formatFileSize=function(t,i){let o=0===i?0:Math.floor(Math.log(i)/Math.log(1024));o=n.clamp(o,0,m.length-1);const a=e.formatNumber(i/Math.pow(1024,o),{maximumFractionDigits:2});return r.replace(t.units.bytes[m[o]],{fileSize:a})},t.formatImperialArea=function(t,r,e,n=2,o="abbr"){const c=i.preferredImperialAreaUnit(r,e);return a(t,i.convertUnit(r,e,c),c,n,o)},t.formatImperialLength=function(t,r,e,n=2,o="abbr"){const c=i.preferredImperialLengthUnit(r,e);return a(t,i.convertUnit(r,e,c),c,n,o)},t.formatImperialVerticalLength=function(t,r,e,n=2,o="abbr"){const c=i.preferredImperialVerticalLengthUnit(r,e);return a(t,i.convertUnit(r,e,c),c,n,o)},t.formatMetricArea=function(t,r,e,n=2,o="abbr"){const c=i.preferredMetricAreaUnit(r,e);return a(t,i.convertUnit(r,e,c),c,n,o)},t.formatMetricLength=function(t,r,e,n=2,o="abbr"){const c=i.preferredMetricLengthUnit(r,e);return a(t,i.convertUnit(r,e,c),c,n,o)},t.formatMetricVerticalLength=function(t,r,e,n=2,o="abbr"){const c=i.preferredMetricVerticalLengthUnit(r,e);return a(t,i.convertUnit(r,e,c),c,n,o)},t.formatSlope=function(t,r,n=2){const o=i.convertUnit(t,r,"radians");return o>Math.PI/4?c(o,"radians",n):e.formatNumber(Math.tan(o),{style:"percent",maximumFractionDigits:n})},t.unitName=o,Object.defineProperty(t,"__esModule",{value:!0})}));
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","dojo/i18n!./nls/Units","./string","./unitUtils","../intl/number"],(function(r,t,e,i,n,o){function a(r,t){return e.units[r][t]}function c(r,t,e,i){return void 0===e&&(e=2),void 0===i&&(i="abbr"),o.formatNumber(r,{minimumFractionDigits:e,maximumFractionDigits:e})+" "+a(t,i)}Object.defineProperty(t,"__esModule",{value:!0}),t.unitName=a,t.formatDecimal=c,t.formatMetricLength=function(r,t,e,i){void 0===e&&(e=2),void 0===i&&(i="abbr");var o=n.preferredMetricLengthUnit(r,t);return c(n.convertUnit(r,t,o),o,e,i)},t.formatMetricVerticalLength=function(r,t,e,i){void 0===e&&(e=2),void 0===i&&(i="abbr");var o=n.preferredMetricVerticalLengthUnit(r,t);return c(n.convertUnit(r,t,o),o,e,i)},t.formatImperialLength=function(r,t,e,i){void 0===e&&(e=2),void 0===i&&(i="abbr");var o=n.preferredImperialLengthUnit(r,t);return c(n.convertUnit(r,t,o),o,e,i)},t.formatImperialVerticalLength=function(r,t,e,i){void 0===e&&(e=2),void 0===i&&(i="abbr");var o=n.preferredImperialVerticalLengthUnit(r,t);return c(n.convertUnit(r,t,o),o,e,i)},t.formatMetricArea=function(r,t,e,i){void 0===e&&(e=2),void 0===i&&(i="abbr");var o=n.preferredMetricAreaUnit(r,t);return c(n.convertUnit(r,t,o),o,e,i)},t.formatImperialArea=function(r,t,e,i){void 0===e&&(e=2),void 0===i&&(i="abbr");var o=n.preferredImperialAreaUnit(r,t);return c(n.convertUnit(r,t,o),o,e,i)},t.formatDMS=function(r,t,e){void 0===e&&(e=2);var i=n.convertUnit(r,t,"degrees"),o=i-Math.floor(i);i-=o;var a=(o*=60)-Math.floor(o);return o-=a,a*=60,i.toFixed()+"° "+o.toFixed()+"' "+a.toFixed(e)+'"'};var f=e.units.bytes,u=[f.B,f.kB,f.MB,f.GB,f.TB];t.formatFileSize=function(r){var t=0===r?0:Math.floor(Math.log(r)/Math.log(1024)),e=o.formatNumber(r/Math.pow(1024,t),{maximumFractionDigits:2});return i.replace(u[t],{fileSize:e})}}));
