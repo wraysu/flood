@@ -30,7 +30,7 @@ require({
           return k.clone().expand(f * b / k.width);
         };
       });
-    }/*, 'esri/layers/mixins/ArcGISMapService': function() {
+    }, 'esri/layers/mixins/ArcGISMapService': function() {
       define('require exports core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/SpatialReference esri/layers/support/commonProperties'.split(' '), function(r, l, p, b, a, u, f, k) {
         Object.defineProperty(l, '__esModule', { value: !0 });
         l.ArcGISMapService = function(m) {
@@ -112,7 +112,7 @@ require({
           }(a.declared(m));
         };
       });
-    }, 'esri/layers/mixins/SublayersOwner': function() {
+    }/*, 'esri/layers/mixins/SublayersOwner': function() {
       define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper esri/core/Collection esri/core/CollectionFlattener esri/core/Error esri/core/lang esri/core/Logger esri/core/accessorSupport/decorators esri/core/accessorSupport/ensureType esri/core/accessorSupport/PropertyOrigin esri/layers/support/Sublayer esri/layers/support/sublayerUtils'.split(' '),
         function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x) {
           function v(a, b, e) {
