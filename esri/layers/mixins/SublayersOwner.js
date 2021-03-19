@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/assignHelper","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Collection","../../core/CollectionFlattener","../../core/Error","../../core/Logger","../../core/accessorSupport/decorators","../../core/accessorSupport/PropertyOrigin","../../core/accessorSupport/utils","../support/Sublayer","../support/sublayerUtils"],(function(e,r,t,a,s,n,o,l,i,u,y,c,p,b){Object.defineProperty(r,"__esModule",{value:!0});var d=i.getLogger("esri.layers.TileLayer");var f=n.ofType(p);function h(e,r){e&&e.forEach((function(e){r(e),e.sublayers&&e.sublayers.length&&h(e.sublayers,r)}))}r.forEachSublayer=h,r.SublayersOwner=function(e){return function(e){function r(){for(var r,t=[],a=0;a<arguments.length;a++)t[a]=arguments[a];var s=e.apply(this,t)||this;return s.allSublayers=new o({root:s,rootCollectionNames:["sublayers"],getChildrenFunction:function(e){return e.sublayers}}),s.sublayersSourceJSON=((r={})[2]={},r[3]={},r[4]={},r[5]={},r),s.watch("sublayers",(function(e,r){return s._handleSublayersChange(e,r)}),!0),s}return a(r,e),r.prototype.readSublayers=function(e,r){if(r&&e){var t=this.sublayersSourceJSON,a=y.nameToId(r.origin);if(!(a<2||(t[a]={context:r,visibleLayers:e.visibleLayers||t[a].visibleLayers,layers:e.layers||t[a].layers},a>2))){this._set("serviceSublayers",this.createSublayersForOrigin("service").sublayers);var s=this.createSublayersForOrigin("web-document"),n=s.sublayers,o=s.origin,l=c.getProperties(this);l.setDefaultOrigin(o),this._set("sublayers",new f(n)),l.setDefaultOrigin("user")}}},r.prototype.findSublayerById=function(e){return this.allSublayers.find((function(r){return r.id===e}))},r.prototype.createServiceSublayers=function(){return this.createSublayersForOrigin("service").sublayers},r.prototype.createSublayersForOrigin=function(e){for(var r="web-document"===e?y.nameToId("web-map"):y.nameToId(e),t=2,a=this.sublayersSourceJSON[2].layers,s=this.sublayersSourceJSON[2].context,n=null,o=0,l=[3,4,5].filter((function(e){return e<=r}));o<l.length;o++){var i=l[o],u=this.sublayersSourceJSON[i];b.isSublayerOverhaul(u.layers)&&(t=i,a=u.layers,s=u.context,u.visibleLayers&&(n={visibleLayers:u.visibleLayers,context:u.context}))}for(var c=[3,4,5].filter((function(e){return e>t&&e<=r})),d=null,v=0,S=c;v<S.length;v++){var g=S[v],O=this.sublayersSourceJSON[g],m=O.layers,w=O.visibleLayers,L=O.context;m&&(d={layers:m,context:L}),w&&(n={visibleLayers:w,context:L})}var x=function(e,r){var t=[],a={};return e?(e.forEach((function(e){var s=new p;if(s.read(e,r),a[s.id]=s,null!=e.parentLayerId&&-1!==e.parentLayerId){var n=a[e.parentLayerId];n.sublayers||(n.sublayers=[]),n.sublayers.unshift(s)}else t.unshift(s)})),t):t}(a,s),N=new Map,E=new Set;if(d)for(var I=0,J=d.layers;I<J.length;I++){var T=J[I];N.set(T.id,T)}if(n)for(var C=0,F=n.visibleLayers;C<F.length;C++){var _=F[C];E.add(_)}return h(x,(function(e){d&&e.read(N.get(e.id),d.context),n&&e.read({defaultVisibility:E.has(e.id)},n.context)})),{origin:y.idToName(t),sublayers:new f({items:x})}},r.prototype.read=function(e,r){this.inherited(arguments),this.readSublayers(e,r)},r.prototype._handleSublayersChange=function(e,r){var t=this;r&&(r.forEach((function(e){e.parent=null,e.layer=null})),this.handles.remove("sublayers-owner")),e&&(e.forEach((function(e){e.parent=t,e.layer=t})),this.handles.add([e.on("after-add",(function(e){var r=e.item;r.parent=t,r.layer=t})),e.on("after-remove",(function(e){var r=e.item;r.parent=null,r.layer=null}))],"sublayers-owner"),"tile"===this.type&&this.handles.add(e.on("before-changes",(function(e){d.error(new l("tilelayer:sublayers-non-modifiable","Sublayer can't be added, moved, or removed from the layer's sublayers",{layer:t})),e.preventDefault()})),"sublayers-owner"))},s([u.property({readOnly:!0})],r.prototype,"allSublayers",void 0),s([u.property({readOnly:!0,type:n.ofType(p)})],r.prototype,"serviceSublayers",void 0),s([u.property({value:null,type:f,json:{read:!1,write:{allowNull:!0,ignoreOrigin:!0}}})],r.prototype,"sublayers",void 0),s([u.property({readOnly:!0})],r.prototype,"sublayersSourceJSON",void 0),r=s([u.subclass("esri.layers.mixins.SublayersOwner")],r)}(u.declared(e))}}));
