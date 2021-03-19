@@ -22,7 +22,7 @@ require([
       map: map,
       container: "viewDiv",
       zoom: 4,
-      center: [-100, 30]
+      center: [121, 23]
     });
 
     // time slider widget initialization
@@ -30,6 +30,20 @@ require([
       container: "timeSlider",
       view: view,
       timeVisible: true, // show the time stamps on the timeslider
+      fullTimeExtent: { // entire extent of the timeSlider
+				start: new Date(2019, 6, 22,5),
+				end: new Date(2019, 6, 23,4)
+			  },
+			  stops: {
+				interval: {
+				  value: 1,
+				  unit: "hours"
+				}
+			  },
+			  values:[ // location of timeSlider thumbs
+		//		new Date(2000, 2, 1,0),
+				new Date(2019, 6, 22,5)
+			  ],
       loop: true
     });
 
@@ -38,7 +52,7 @@ require([
 
     view.whenLayerView(layer).then(function (lv) {
       // around up the full time extent to full hour
-      timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent;
+    //  timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent;
     });
     const legend = new Legend({
       view: view
