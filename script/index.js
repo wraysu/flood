@@ -1,3 +1,4 @@
+var pastSliderTime = 0;
 require([
     "esri/Map",
     "esri/views/MapView",
