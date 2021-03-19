@@ -986,7 +986,7 @@ H esri/layers/support/ExportImageParameters
  esri/geometry/support/webMercatorUtils
 */ 
 //  function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t, B, H, webMercatorUtils) {
-define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper esri/core/accessorSupport/decorators esri/layers/mixins/TemporalLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/Layer esri/core/MultiOriginJSONSupport esri/geometry/support/webMercatorUtils'.split(' '),
+define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper esri/core/accessorSupport/decorators esri/layers/mixins/TemporalLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/core/MultiOriginJSONSupport esri/layers/Layer esri/geometry/support/webMercatorUtils'.split(' '),
   function (r, l, p, b, a, u, d, t, q, F, G, e, D, E, n, A, y, webMercatorUtils) {
     return function (e) {
       function c(a, b) {
