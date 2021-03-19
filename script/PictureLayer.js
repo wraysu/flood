@@ -956,9 +956,38 @@ require({
  */
 
 //define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper core1/tsSupport/generatorHelper core1/tsSupport/awaiterHelper esri/request esri/core/Error esri/core/maybe esri/core/MultiOriginJSONSupport esri/core/promiseUtils esri/core/accessorSupport/decorators esri/geometry/Extent esri/geometry/support/scaleUtils esri/layers/Layer esri/layers/mixins/ArcGISMapService esri/layers/mixins/ArcGISService esri/layers/mixins/OperationalLayer esri/layers/mixins/PortalLayer esri/layers/mixins/RefreshableLayer esri/layers/mixins/ScaleRangeLayer esri/layers/mixins/SublayersOwner esri/layers/mixins/TemporalLayer esri/layers/support/commonProperties esri/layers/support/ExportImageParameters esri/geometry/support/webMercatorUtils'.split(' '),
+/*
+l exprots 
+p core1/tsSupport/assignHelper 
+b core1/tsSupport/declareExtendsHelper 
+a core1/tsSupport/decorateHelper 
+u core1/tsSupport/paramHelper 
+f core1/tsSupport/generatorHelper 
+k core1/tsSupport/awaiterHelper 
+m esri/request 
+w esri/core/Error 
+h esri/core/maybe 
+A esri/core/MultiOriginJSONSupport 
+g esri/core/promiseUtils 
+d esri/core/accessorSupport/decorators 
+x esri/geometry/Extent 
+v esri/geometry/support/scaleUtils 
+y esri/layers/Layer 
+e esri/layers/mixins/ArcGISMapService 
+D esri/layers/mixins/ArcGISService 
+E esri/layers/mixins/OperationalLayer 
+n esri/layers/mixins/PortalLayer 
+F esri/layers/mixins/RefreshableLayer 
+q esri/layers/mixins/ScaleRangeLayer 
+G esri/layers/mixins/SublayersOwner 
+t esri/layers/mixins/TemporalLayer 
+B esri/layers/support/commonProperties 
+H esri/layers/support/ExportImageParameters 
+ esri/geometry/support/webMercatorUtils
+*/ 
 //  function(r, l, p, b, a, u, f, k, m, w, h, A, g, d, x, v, y, e, D, E, n, F, q, G, t, B, H, webMercatorUtils) {
-define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper esri/geometry/support/webMercatorUtils'.split(' '),
-  function (r, l, p, b, a, webMercatorUtils) {
+define('require exports core1/tsSupport/assignHelper core1/tsSupport/declareExtendsHelper core1/tsSupport/decorateHelper core1/tsSupport/paramHelper esri/core/accessorSupport/decorators esri/geometry/support/webMercatorUtils'.split(' '),
+  function (r, l, p, b, a, u, d, webMercatorUtils) {
     return function (e) {
       function c(a, b) {
         a = e.call(this) || this;
