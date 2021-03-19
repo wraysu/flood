@@ -4,10 +4,11 @@ require([
     "esri/views/SceneView",
     "esri/layers/FeatureLayer",
     "js/PictureLayer",
+    "esri/geometry/support/webMercatorUtils",
     "esri/widgets/TimeSlider",
     "esri/widgets/Expand",
     "esri/widgets/Legend"
-  ], function (Map, MapView, SceneView, FeatureLayer, PictureLayer,TimeSlider, Expand, Legend) {
+  ], function (Map, MapView, SceneView, FeatureLayer, PictureLayer,webMercatorUtils,TimeSlider, Expand, Legend) {
     const layer = new FeatureLayer({
       url:
         "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/NDFD_Precipitation_v1/FeatureServer/0"
@@ -66,3 +67,29 @@ require([
     });
     view.ui.add(legendExpand, "top-left");
   });
+
+  function addFloodingLayer(url,past,dt){
+    var pt = ((dt-1) == 0)?24: (dt-1);  
+    var currLayer = view.map.findLayerById("flood" + past);				
+    var grapherLayer = addPictureLayer1("flood" + dt, url);
+    view.map.layers.add(grapherLayer);
+    if (currLayer) {				
+      setTimeout(function(){	view.map.layers.remove(currLayer);},500)		
+    } 	
+  }
+
+  function addPictureLayer1(id , picUrl) {
+    var units = "esriMeters"
+    var minPoint = webMercatorUtils.lngLatToXY(121.489563,25.009037);
+    var maxPoint = webMercatorUtils.lngLatToXY(121.621786,25.077316); 
+    var dynamicLayer = new PictureLayer({
+              id: id,
+              visible: true,
+              url: picUrl,
+              opacity: 0.75,
+              pictureExtent: { 'xmin': minPoint[0], 'ymin': minPoint[1], 'xmax': maxPoint[0], 'ymax': maxPoint[1] },
+              units: units,
+              spatialReference: {wkid: 102100, latestWkid: 3857}
+          });
+          return dynamicLayer;
+      }		
