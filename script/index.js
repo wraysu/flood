@@ -4,6 +4,7 @@ require([
   "esri/Map",
   "esri/views/MapView",
   "esri/views/SceneView",
+  "esri/Basemap",
   "esri/layers/WebTileLayer",
   "esri/layers/FeatureLayer",
   "js/PictureLayer",
@@ -20,7 +21,7 @@ require([
   "esri/core/promiseUtils",
   "esri/widgets/Search",
   "esri/core/watchUtils"
-], function (Map, MapView, SceneView, WebTileLayer, FeatureLayer, PictureLayer, SceneLayer, webMercatorUtils, IdentityManager, TimeSlider, Expand, Legend,
+], function (Map, MapView, SceneView, Basemap, WebTileLayer, FeatureLayer, PictureLayer, SceneLayer, webMercatorUtils, IdentityManager, TimeSlider, Expand, Legend,
   SketchViewModel,
   Slider,
   geometryEngine,
