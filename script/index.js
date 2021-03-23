@@ -8,14 +8,34 @@ require([
   "js/PictureLayer",
   "esri/layers/SceneLayer",
   "esri/geometry/support/webMercatorUtils",
+  "esri/identity/IdentityManager",
   "esri/widgets/TimeSlider",
   "esri/widgets/Expand",
   "esri/widgets/Legend"
-], function (Map, MapView, SceneView, FeatureLayer, PictureLayer, SceneLayer, webMercatorUtils, TimeSlider, Expand, Legend) {
+], function (Map, MapView, SceneView, FeatureLayer, PictureLayer, SceneLayer, webMercatorUtils, IdentityManager, TimeSlider, Expand, Legend) {
   const layer = new FeatureLayer({
     url:
       "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/NDFD_Precipitation_v1/FeatureServer/0"
   });
+
+  var g_token = "DCGdjiIssrApWxa4C_KSKbOwxDdcPtxue5JMdzOsa5tZ1VSy25YN8NdVCt90RdpPltVJPbp4dxfpBDJ--oCXBA.."
+  IdentityManager.registerToken({
+    server: 'https://dssmap.ncdr.nat.gov.tw/ceocgis/rest/services',
+    token: g_token
+  });
+  const initialCamera = {
+    position: {
+      "spatialReference": {
+        "latestWkid": 3857,
+        "wkid": 102100
+      },
+      "x": 13403276.20252085,
+      "y": 2501870.1667305403,
+      "z": 73556.10364057217
+    },
+    "heading": 12.289746599260413,
+    "tilt": 69.75693755690583
+  }
 
   const map = new Map({
     basemap: "hybrid",
@@ -27,7 +47,8 @@ require([
     map: map,
     container: "viewDiv",
     zoom: 8,
-    center: [121, 23]
+    camera: initialCamera
+   // center: [121, 23]
   });
 
 
