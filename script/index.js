@@ -1,5 +1,5 @@
 var pastSliderTime = 0;
-var NLSCSLyrs =[];
+var NLSCSLyrs = [];
 require([
   "esri/Map",
   "esri/views/MapView",
@@ -11,8 +11,23 @@ require([
   "esri/identity/IdentityManager",
   "esri/widgets/TimeSlider",
   "esri/widgets/Expand",
-  "esri/widgets/Legend"
-], function (Map, MapView, SceneView, FeatureLayer, PictureLayer, SceneLayer, webMercatorUtils, IdentityManager, TimeSlider, Expand, Legend) {
+  "esri/widgets/Legend",
+  "esri/widgets/Sketch/SketchViewModel",
+  "esri/widgets/Slider",
+  "esri/geometry/geometryEngine",
+  "esri/Graphic",
+  "esri/core/promiseUtils",
+  "esri/widgets/Search",
+  "esri/core/watchUtils"
+], function (Map, MapView, SceneView, FeatureLayer, PictureLayer, SceneLayer, webMercatorUtils, IdentityManager, TimeSlider, Expand, Legend,
+  SketchViewModel,
+  Slider,
+  geometryEngine,
+  Graphic,
+  promiseUtils,
+  Search,
+  watchUtils
+) {
   const layer = new FeatureLayer({
     url:
       "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/NDFD_Precipitation_v1/FeatureServer/0"
@@ -48,7 +63,7 @@ require([
     container: "viewDiv",
     zoom: 8,
     camera: initialCamera
-   // center: [121, 23]
+    // center: [121, 23]
   });
 
 
@@ -167,4 +182,366 @@ require([
     });
     return dynamicLayer;
   }
+
+  var bgExpand = new Expand({
+    view: view,
+    content: queryDiv
+  });
+  if (!isMobile.any()) {
+    view.ui.add([bgExpand], "bottom-left");
+    view.ui.add([resultDiv], "top-right");
+
+
+    // use SketchViewModel to draw polygons that are used as a query
+    let sketchGeometry = null;
+    const sketchViewModel = new SketchViewModel({
+      layer: sketchLayer,
+      defaultUpdateOptions: {
+        tool: "reshape",
+        toggleToolOnClick: false
+      },
+      view: view,
+      defaultCreateOptions: {
+        hasZ: false
+      }
+    });
+    sketchViewModel.on("create", function (event) {
+      if (event.state === "complete") {
+        sketchGeometry = event.graphic.geometry;
+        runQuery();
+      }
+    });
+    sketchViewModel.on("update", function (event) {
+      if (event.state === "complete") {
+        sketchGeometry = event.graphics[0].geometry;
+        runQuery();
+      }
+    });
+    // draw geometry buttons - use the selected geometry to sktech
+    document
+      .getElementById("point-geometry-button")
+      .addEventListener("click", geometryButtonsClickHandler);
+    document
+      .getElementById("line-geometry-button")
+      .addEventListener("click", geometryButtonsClickHandler);
+    document
+      .getElementById("polygon-geometry-button")
+      .addEventListener("click", geometryButtonsClickHandler);
+
+    function geometryButtonsClickHandler(event) {
+      const geometryType = event.target.value;
+      clearGeometry();
+      sketchViewModel.create(geometryType);
+    }
+    const bufferNumSlider = new Slider({
+      container: "bufferNum",
+      min: 0,
+      max: 500,
+      steps: 1,
+      visibleElements: {
+        labels: true
+      },
+      precision: 0,
+      labelFormatFunction: function (value, type) {
+        return value.toString() + "m";
+      },
+      values: [0]
+    });
+    // get user entered values for buffer
+    bufferNumSlider.on(
+      ["thumb-change", "thumb-drag"],
+      bufferVariablesChanged
+    );
+
+    function bufferVariablesChanged(event) {
+      bufferSize = event.value;
+      runQuery();
+    }
+    // Clear the geometry and set the default renderer
+    document
+      .getElementById("clearGeometry")
+      .addEventListener("click", clearGeometry);
+    // Clear the geometry and set the default renderer
+    function clearGeometry() {
+      sketchGeometry = null;
+      sketchViewModel.cancel();
+      sketchLayer.removeAll();
+      bufferLayer.removeAll();
+      clearHighlighting();
+      clearCharts();
+      resultDiv.style.display = "none";
+    }
+    // set the geometry query on the visible SceneLayerView
+    var debouncedRunQuery = promiseUtils.debounce(function () {
+      if (!sketchGeometry) {
+        return;
+      }
+      resultDiv.style.display = "block";
+      updateBufferGraphic(bufferSize);
+      return promiseUtils.eachAlways([
+        queryStatistics(),
+        updateSceneLayer()
+      ]);
+    });
+
+    function runQuery() {
+      debouncedRunQuery().catch((error) => {
+        if (error.name === "AbortError") {
+          return;
+        }
+        console.error(error);
+      });
+    }
+    // Set the renderer with objectIds
+    var highlightHandle = null;
+
+    function clearHighlighting() {
+      if (highlightHandle) {
+        highlightHandle.remove();
+        highlightHandle = null;
+      }
+    }
+
+    function highlightBuildings(objectIds, sceneLayer, sceneLayerView) {
+      // Remove any previous highlighting
+      if (objectIds.length > 0) {
+        clearHighlighting();
+        const objectIdField = sceneLayer.objectIdField;
+        document.getElementById("count").innerHTML = objectIds.length;
+        highlightHandle = sceneLayerView.highlight(objectIds);
+      }
+    }
+    // update the graphic with buffer
+    function updateBufferGraphic(buffer) {
+      // add a polygon graphic for the buffer
+      if (buffer > 0) {
+        var bufferGeometry = geometryEngine.geodesicBuffer(
+          sketchGeometry,
+          buffer,
+          "meters"
+        );
+        if (bufferLayer.graphics.length === 0) {
+          bufferLayer.add(
+            new Graphic({
+              geometry: bufferGeometry,
+              symbol: sketchViewModel.polygonSymbol
+            })
+          );
+        } else {
+          bufferLayer.graphics.getItemAt(0).geometry = bufferGeometry;
+        }
+      } else {
+        bufferLayer.removeAll();
+      }
+    }
+
+    function updateSceneLayer() {
+      for (let ii = 0, p = Promise.resolve(); ii < 22; ii++) {
+        p = p.then(_ => new Promise(resolve => {
+          const query = sceneLayerView[ii].createQuery();
+          query.geometry = sketchGeometry;
+          query.distance = bufferSize;
+          if (ii < 22) {
+            sceneLayerView[ii].queryObjectIds(query).then(function (res) {
+              if (res.length > 0) highlightBuildings(res, NLSCSLyrs[ii], sceneLayerView[ii]);
+              resolve();
+            });
+          } else {
+            //       return sceneLayerView[i].queryObjectIds(query).then(function(res){if (res.length >0)  highlightBuildings(res,NLSCSLyrs[i],sceneLayerView[i])}); 
+          }
+        }))
+      }
+    }
+    var yearChart = null;
+    var materialChart = null;
+
+    function queryStatistics() {
+      const statDefinitions = [{
+        onStatisticField: "CASE WHEN  BUILD_H <10 THEN 1 ELSE 0 END",
+        outStatisticFieldName: "10公尺以下",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN BUILD_H >=10 and BUILD_H <20 THEN 1 ELSE 0 END",
+        outStatisticFieldName: "10-20公尺",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN BUILD_H >=20 and BUILD_H <30 THEN 1 ELSE 0 END",
+        outStatisticFieldName: "20-30公尺",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN BUILD_H >=30 and BUILD_H <40 THEN 1 ELSE 0 END",
+        outStatisticFieldName: "30-40公尺",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN BUILD_H >=40  THEN 1 ELSE 0 END",
+        outStatisticFieldName: "40公尺以上",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN (BUILD_NO = 1 ) THEN 1 ELSE 0 END",
+        outStatisticFieldName: "1層",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN (BUILD_NO = 2 ) THEN 1 ELSE 0 END",
+        outStatisticFieldName: "2層",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN (BUILD_NO = 3 ) THEN 1 ELSE 0 END",
+        outStatisticFieldName: "3層",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN (BUILD_NO = 4 ) THEN 1 ELSE 0 END",
+        outStatisticFieldName: "4層",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN (BUILD_NO = 5 ) THEN 1 ELSE 0 END",
+        outStatisticFieldName: "5層",
+        statisticType: "sum"
+      },
+      {
+        onStatisticField: "CASE WHEN (BUILD_NO >= 6 ) THEN 1 ELSE 0 END",
+        outStatisticFieldName: "6層以上",
+        statisticType: "sum"
+      }
+      ];
+      var allStats = [];
+      for (let iii = 0, p = Promise.resolve(); iii < 22; iii++) {
+        p = p.then(_ => new Promise(resolve => {
+          try {
+            const query = sceneLayerView[iii].createQuery();
+            query.geometry = sketchGeometry;
+            query.distance = bufferSize;
+            query.outStatistics = statDefinitions;
+            sceneLayerView[iii].queryFeatures(query).then(function (result) {
+              if (iii == 0) {
+                allStats = result.features[0].attributes;
+              } else if (iii == 21) {
+                updateChart(materialChart, [
+                  allStats['10公尺以下'],
+                  allStats['10-20公尺'],
+                  allStats['20-30公尺'],
+                  allStats['30-40公尺'],
+                  allStats['40公尺以上']
+                ]);
+                updateChart(yearChart, [
+                  allStats['1層'],
+                  allStats['2層'],
+                  allStats['3層'],
+                  allStats['4層'],
+                  allStats['5層'],
+                  allStats['6層以上']
+                ]);
+                return;
+              } else {
+                var allStatsKey = Object.keys(allStats);
+                allStatsKey.forEach(item => allStats[item] += result.features[0].attributes[item])
+              }
+              resolve();
+            }, console.error);
+          } catch (e) {
+            resolve();
+          }
+        }))
+      }
+    }
+    // Updates the given chart with new data
+    function updateChart(chart, dataValues) {
+      chart.data.datasets[0].data = dataValues;
+      chart.update();
+    }
+
+    function createYearChart() {
+      const yearCanvas = document.getElementById("year-chart");
+      yearChart = new Chart(yearCanvas.getContext("2d"), {
+        type: "horizontalBar",
+        data: {
+          labels: [
+            "1層",
+            "2層",
+            "3層",
+            "4層",
+            "5層",
+            "6層以上"
+          ],
+          datasets: [{
+            label: "樓層統計",
+            backgroundColor: "#149dcf",
+            stack: "Stack 0",
+            data: [0, 0, 0, 0, 0, 0]
+          }]
+        },
+        options: {
+          responsive: false,
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: "樓層統計"
+          },
+          scales: {
+            xAxes: [{
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                precision: 0
+              }
+            }],
+            yAxes: [{
+              stacked: true
+            }]
+          }
+        }
+      });
+    }
+
+    function createMaterialChart() {
+      const materialCanvas = document.getElementById("material-chart");
+      materialChart = new Chart(materialCanvas.getContext("2d"), {
+        type: "doughnut",
+        data: {
+          labels: ["<10公尺", "10-20公尺", "20-30公尺", "30-40公尺", ">40公尺"],
+          datasets: [{
+            backgroundColor: [
+              "#FD7F6F",
+              "#7EB0D5",
+              "#B2E061",
+              "#BD7EBE",
+              "#FFB55A"
+            ],
+            borderWidth: 0,
+            data: [0, 0, 0, 0, 0]
+          }]
+        },
+        options: {
+          responsive: false,
+          cutoutPercentage: 35,
+          legend: {
+            position: "bottom"
+          },
+          title: {
+            display: true,
+            text: "樓層高統計"
+          }
+        }
+      });
+    }
+
+    function clearCharts() {
+      updateChart(materialChart, [0, 0, 0, 0, 0]);
+      updateChart(yearChart, [0, 0, 0, 0, 0, 0]);
+      document.getElementById("count").innerHTML = 0;
+    }
+    createYearChart();
+    createMaterialChart();
+  }
+
 });
