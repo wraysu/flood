@@ -80,7 +80,7 @@ view.when(function(){
     var currLayer = view.map.findLayerById("flood" + past);
     var grapherLayer = addPictureLayer1("flood" + dt, url);
     debugger;
-    view.map.layers.add(grapherLayer);
+    map.add(grapherLayer);
     if (currLayer) {
       setTimeout(function () { view.map.layers.remove(currLayer); }, 500)
     }
