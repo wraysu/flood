@@ -18,7 +18,7 @@ require([
       "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/NDFD_Precipitation_v1/FeatureServer/0"
   });
 
-  var g_token = "DCGdjiIssrApWxa4C_KSKbOwxDdcPtxue5JMdzOsa5tZ1VSy25YN8NdVCt90RdpPltVJPbp4dxfpBDJ--oCXBA.."
+  var g_token = "Idu-9uPF_bRQWDAqo5udB8XFNwmvjt-cMIB5XJ8ICXbgBT_FRmQ_rxxyLHVVuHsplleA8Vq2RZo7UuNDbW1LBw.."
   IdentityManager.registerToken({
     server: 'https://dssmap.ncdr.nat.gov.tw/ceocgis/rest/services',
     token: g_token
