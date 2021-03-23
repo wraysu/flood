@@ -28,7 +28,6 @@ require([
     center: [121, 23]
   });
 
-  var ts = 0;
 
   // add the UI for a title
   view.ui.add("titleDiv", "top-right");
@@ -67,11 +66,10 @@ require([
 
       var past = parseInt((pastSliderTime - new Date(2019, 6, 22, 4).getTime()) / (60 * 60 * 1000))
       //	var t = 11950013000 + 10000 * dt
-      if (ts > 0) {
-        var url = "https://winds.ncdr.nat.gov.tw/data/flood/Frame_" + dt + ".png";
-        addFloodingLayer(url, past, dt);
-      }
-      ts++;
+
+      var url = "https://winds.ncdr.nat.gov.tw/data/flood/Frame_" + dt + ".png";
+      addFloodingLayer(url, past, dt);
+
       pastSliderTime = (new Date(value.end).getTime());
     })
   })
