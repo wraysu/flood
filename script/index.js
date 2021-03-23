@@ -78,6 +78,7 @@ view.when(function(){
   function addFloodingLayer(url, past, dt) {
     var pt = ((dt - 1) == 0) ? 24 : (dt - 1);
     var currLayer = view.map.findLayerById("flood" + past);
+    console.log("load PctureLayer")
     var grapherLayer = addPictureLayer1("flood" + dt, url);
     view.map.layers.add(grapherLayer);
     if (currLayer) {
