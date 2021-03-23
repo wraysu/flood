@@ -33,6 +33,7 @@ require([
     container: "timeSlider",
     view: view,
     mode: "instant",
+    playRate:2000,
     timeVisible: true, // show the time stamps on the timeslider
     fullTimeExtent: { // entire extent of the timeSlider
       start: new Date(2019, 6, 22, 5),
