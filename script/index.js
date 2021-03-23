@@ -79,6 +79,7 @@ view.when(function(){
     var pt = ((dt - 1) == 0) ? 24 : (dt - 1);
     var currLayer = view.map.findLayerById("flood" + past);
     var grapherLayer = addPictureLayer1("flood" + dt, url);
+    debugger;
     view.map.layers.add(grapherLayer);
     if (currLayer) {
       setTimeout(function () { view.map.layers.remove(currLayer); }, 500)
