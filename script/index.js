@@ -90,6 +90,9 @@ require([
     // center: [121, 23]
   });
 
+  const sketchLayer = new GraphicsLayer({title:"環域物件",listMode: "hide"});
+  const bufferLayer = new GraphicsLayer({title:"環域範圍",listMode: "hide"});
+  
   const Basmap_NLSC = new SceneLayer({
     url: "https://i3s.nlsc.gov.tw/Terrain20M/i3s/rest/services/nlsc/SceneServer/baselayers/0",
     elevationInfo: {
