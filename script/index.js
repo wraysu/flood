@@ -78,7 +78,6 @@ view.when(function(){
   function addFloodingLayer(url, past, dt) {
     var pt = ((dt - 1) == 0) ? 24 : (dt - 1);
     var currLayer = view.map.findLayerById("flood" + past);
-    console.log("load PctureLayer")
     var grapherLayer = addPictureLayer1("flood" + dt, url);
     view.map.layers.add(grapherLayer);
     if (currLayer) {
@@ -88,9 +87,10 @@ view.when(function(){
 
   function addPictureLayer1(id, picUrl) {
     var units = "esriMeters";
-    console.log(units);
+   
     var minPoint = webMercatorUtils.lngLatToXY(121.489563, 25.009037);
-    var maxPoint = webMercatorUtils.lngLatToXY(121.621786, 25.077316);
+    var maxPoint = webMercatorUtils.lngLatToXY(121.621786, 25.077316); 
+    console.log("load Picture...");
     var dynamicLayer = new PictureLayer({
       id: id,
       visible: true,
