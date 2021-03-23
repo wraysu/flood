@@ -29,6 +29,7 @@ require([
   "esri/Basemap",
   "esri/layers/WebTileLayer",
   "esri/layers/FeatureLayer",
+  "esri/layers/GraphicsLayer",
   "js/PictureLayer",
   "esri/layers/SceneLayer",
   "esri/geometry/support/webMercatorUtils",
@@ -43,7 +44,7 @@ require([
   "esri/core/promiseUtils",
   "esri/widgets/Search",
   "esri/core/watchUtils"
-], function (Map, MapView, SceneView, Basemap, WebTileLayer, FeatureLayer, PictureLayer, SceneLayer, webMercatorUtils, IdentityManager, TimeSlider, Expand, Legend,
+], function (Map, MapView, SceneView, Basemap, WebTileLayer, FeatureLayer, GraphicsLayer, PictureLayer, SceneLayer, webMercatorUtils, IdentityManager, TimeSlider, Expand, Legend,
   SketchViewModel,
   Slider,
   geometryEngine,
@@ -92,7 +93,7 @@ require([
 
   const sketchLayer = new GraphicsLayer({title:"環域物件",listMode: "hide"});
   const bufferLayer = new GraphicsLayer({title:"環域範圍",listMode: "hide"});
-  
+
   const Basmap_NLSC = new SceneLayer({
     url: "https://i3s.nlsc.gov.tw/Terrain20M/i3s/rest/services/nlsc/SceneServer/baselayers/0",
     elevationInfo: {
