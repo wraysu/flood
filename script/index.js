@@ -1,4 +1,5 @@
 var pastSliderTime = 0;
+var NLSCSLyrs =[];
 require([
   "esri/Map",
   "esri/views/MapView",
@@ -37,6 +38,47 @@ require([
     //  timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent;
   });
   view.when(function () {
+    var symbol = {
+      type: "mesh-3d", // autocasts as new MeshSymbol3D()
+      symbolLayers: [{
+        type: "fill", // autocasts as new FillSymbol3DLayer()
+        // If the value of material is not assigned, the default color will be grey
+        material: {
+          color: [255, 255, 255, 0.5],
+          colorMixMode: "replace"
+        },
+        edges: {
+          type: "solid",
+          color: [0, 0, 0, 0.6],
+          size: 1.0
+        }
+      }]
+    };
+    var NLSCUrl = "https://i3s.nlsc.gov.tw/i3s/Service"
+    fetch(NLSCUrl)
+      .then(res => {
+        return res.json();
+      }).then(result => {
+        var Lyrs = result.LAYERS.LOD1
+        Lyrs.forEach((item, i) => {
+          NLSCSLyrs[i] = new SceneLayer({
+            url: item.Url,
+            listMode: "hide"
+          });
+          map.add(NLSCSLyrs[i]);
+          NLSCSLyrs[i].renderer = {
+            type: "simple", // autocasts as new SimpleRenderer()
+            symbol: symbol
+          };
+          NLSCSLyrs[i].outFields = ["BUILD_H", "BUILD_NO"];
+          view.whenLayerView(NLSCSLyrs[i]).then(function (layerView) {
+            sceneLayerView[i] = layerView;
+            if (!isMobile.any()) {
+              queryDiv.style.display = "block";
+            }
+          });
+        })
+      })
     const timeSlider = new TimeSlider({
       container: "timeSlider",
       view: view,
