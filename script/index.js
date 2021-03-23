@@ -66,6 +66,29 @@ require([
     // center: [121, 23]
   });
 
+  const Basmap_NLSC = new SceneLayer({
+    url: "https://i3s.nlsc.gov.tw/Terrain20M/i3s/rest/services/nlsc/SceneServer/baselayers/0",
+    elevationInfo: {
+      mode: "absolute-height",
+      offset: 10
+    }
+  });
+  var mapBaseLayer = new WebTileLayer({
+    urlTemplate: "https://stamen-tiles-{subDomain}.a.ssl.fastly.net/terrain/{level}/{col}/{row}.png",
+    subDomains: ["a", "b", "c", "d"],
+    /*   copyright: 'Map tiles by <a href="http://stamen.com/">Stamen Design</a>, ' +
+         'under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. ' +
+         'Data by <a href="http://openstreetmap.org/">OpenStreetMap</a>, ' +
+         'under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'*/
+  });
+  // Create a Basemap with the WebTileLayer. The thumbnailUrl will be used for
+  // the image in the BasemapToggle widget.
+  var stamen = new Basemap({
+    baseLayers: [mapBaseLayer],
+    title: "Terrain",
+    id: "terrain",
+    thumbnailUrl: "https://stamen-tiles.a.ssl.fastly.net/terrain/10/177/409.png"
+  });
 
   // add the UI for a title
   view.ui.add("titleDiv", "top-right");
@@ -75,6 +98,17 @@ require([
     //  timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent;
   });
   view.when(function () {
+    var toggle = new BasemapToggle({
+      visibleElements: {
+        title: true
+      },
+      view: view,
+      nextBasemap: "terrain"
+    });
+    // Add widget to the top right corner of the view
+    view.ui.add(toggle, "top-right");
+
+
     var symbol = {
       type: "mesh-3d", // autocasts as new MeshSymbol3D()
       symbolLayers: [{
