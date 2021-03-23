@@ -28,8 +28,17 @@ require([
     center: [121, 23]
   });
 
-  // time slider widget initialization
-  const timeSlider = new TimeSlider({
+ 
+
+  // add the UI for a title
+  view.ui.add("titleDiv", "top-right");
+
+  view.whenLayerView(layer).then(function (lv) {
+    // around up the full time extent to full hour
+    //  timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent;
+  });
+view.when(function(){
+   const timeSlider = new TimeSlider({
     container: "timeSlider",
     view: view,
     mode: "instant",
@@ -52,26 +61,6 @@ require([
     loop: true
   });
 
-  // add the UI for a title
-  view.ui.add("titleDiv", "top-right");
-
-  view.whenLayerView(layer).then(function (lv) {
-    // around up the full time extent to full hour
-    //  timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent;
-  });
-  const legend = new Legend({
-    view: view
-  });
-  const legendExpand = new Expand({
-    expandIconClass: "esri-icon-legend",
-    expandTooltip: "Legend",
-    view: view,
-    content: legend,
-    expanded: false
-  });
-  view.ui.add(legendExpand, "top-left");
-
-
   timeSlider.watch("timeExtent", function (value) {
     var dt = (new Date(value.end).getTime() - new Date(2019, 6, 22, 4).getTime()) / (60 * 60 * 1000)
     console.log(dt)
@@ -82,6 +71,9 @@ require([
     addFloodingLayer(url, past, dt)
     pastSliderTime = (new Date(value.end).getTime());
   })
+})
+ // time slider widget initialization
+ 
 
   function addFloodingLayer(url, past, dt) {
     var pt = ((dt - 1) == 0) ? 24 : (dt - 1);
