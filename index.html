@@ -40,6 +40,43 @@
     <div id="titleDiv" class="esri-widget">
       <div id="titleText">Flooding forecast </div>
     </div>
+    <div id="queryDiv" class="esri-widget">
+      <b>環域分析</b><br />
+      <br />選擇分析方式:
+      <div class="geometry-options">
+        <button class="esri-widget--button esri-icon-map-pin geometry-button" id="point-geometry-button" value="point"
+          title="Query by point"></button>
+        <button class="esri-widget--button esri-icon-polyline geometry-button" id="line-geometry-button"
+          value="polyline" title="Query by line"></button>
+        <button class="esri-widget--button esri-icon-polygon geometry-button" id="polygon-geometry-button"
+          value="polygon" title="Query by polygon"></button>
+      </div>
+      <br />
+      <div class="tooltip">
+        <label for="bufferNum">設定分析範圍:</label>
+        <div id="bufferNum"></div>
+      </div>
+      <br />
+      <button class="esri-button" id="clearGeometry" type="button">
+        清除範圍
+      </button>
+    </div>
+
+    <div id="resultDiv" class="esri-widget">
+      <div class="count">
+        篩選建物數量:
+        <div class="count" id="count">0</div>
+      </div>
+      <div class="charts">
+        <div>
+          <canvas id="year-chart" height="250" width="260" />
+        </div>
+        <div>
+          <canvas id="material-chart" width="250" height="300" />
+        </div>
+      </div>
+    </div>
+  </div>
   </body>
 
 </html>
