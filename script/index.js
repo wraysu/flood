@@ -17,6 +17,7 @@ require([
 
   const map = new Map({
     basemap: "hybrid",
+    ground: "world-elevation",
     layers: [layer]
   });
 
