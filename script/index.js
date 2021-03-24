@@ -103,7 +103,7 @@ require([
     url: "https://i3s.nlsc.gov.tw/Terrain20M/i3s/rest/services/nlsc/SceneServer/baselayers/0",
     elevationInfo: {
       mode: "absolute-height",
-      offset: 10
+    //  offset: 10
     }
   });
   var mapBaseLayer = new WebTileLayer({
