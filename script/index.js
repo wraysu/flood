@@ -267,7 +267,7 @@ require([
     content: queryDiv
   });
   if (!isMobile.any()) {
-    view.ui.add([bgExpand], "top--left");
+    view.ui.add([bgExpand], "top-left");
     view.ui.add([resultDiv], "top-right");
 
 
