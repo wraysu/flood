@@ -93,11 +93,11 @@ require([
           },
     layers: [layer]
   });
-
+/*
     map.ground.when(function() {
           map.ground.layers.add(elevationLayer);
         });
-  
+  */
   const view = new SceneView({
     map: map,
     container: "viewDiv",
