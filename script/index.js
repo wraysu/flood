@@ -326,6 +326,7 @@ require([
       },
       values: [0]
     });
+    bufferNumSlider.labelsVisible = true;
     // get user entered values for buffer
     bufferNumSlider.on(
       ["thumb-change", "thumb-drag"],
