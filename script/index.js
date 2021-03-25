@@ -87,11 +87,13 @@ require([
   });
   const map = new Map({
     basemap: "hybrid",
- //   ground: elevLyr,
+    ground: "world-elevation",
     layers: [layer]
   });
 
-   map.ground.layers.add(elevationLayer)
+    map.ground.when(function() {
+          map.ground.layers.add(elevationLayer);
+        });
   
   const view = new SceneView({
     map: map,
