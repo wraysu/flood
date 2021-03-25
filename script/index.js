@@ -60,6 +60,7 @@ require([
       "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/NDFD_Precipitation_v1/FeatureServer/0"
   });
 
+
   var g_token = "Idu-9uPF_bRQWDAqo5udB8XFNwmvjt-cMIB5XJ8ICXbgBT_FRmQ_rxxyLHVVuHsplleA8Vq2RZo7UuNDbW1LBw.."
   IdentityManager.registerToken({
     server: 'https://dssmap.ncdr.nat.gov.tw/ceocgis/rest/services',
@@ -95,6 +96,15 @@ require([
     camera: initialCamera
     // center: [121, 23]
   });
+
+  //基礎資料    
+  var twMap = new WebTileLayer("https://wmts.nlsc.gov.tw/wmts/EMAP2/default/GoogleMapsCompatible/{level}/{row}/{col}.png", {
+    "id": "baseMaptw",
+    title:"底圖",
+    listMode: "hide"
+  })
+  twMap.minScale = 500000;
+  map.add(twMap);
 
   const sketchLayer = new GraphicsLayer({title:"環域物件",listMode: "hide"});
   const bufferLayer = new GraphicsLayer({title:"環域範圍",listMode: "hide"});
