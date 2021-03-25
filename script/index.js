@@ -1,5 +1,6 @@
 var pastSliderTime = 0;
 var NLSCSLyrs = [];
+let bufferSize = 0;
 var isMobile = {
   Android: function () {
     return navigator.userAgent.match(/Android/i);
