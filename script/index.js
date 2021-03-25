@@ -1,5 +1,6 @@
 var pastSliderTime = 0;
 var NLSCSLyrs = [];
+let sceneLayerView = [];
 let bufferSize = 0;
 var isMobile = {
   Android: function () {
