@@ -87,7 +87,10 @@ require([
   });
   const map = new Map({
     basemap: "hybrid",
-    ground: "world-elevation",
+ //   ground: "world-elevation",
+    ground: {
+            layers: [elevLyr]
+          },
     layers: [layer]
   });
 
