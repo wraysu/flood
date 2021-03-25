@@ -87,10 +87,12 @@ require([
   });
   const map = new Map({
     basemap: "hybrid",
-    ground: elevLyr,
+ //   ground: elevLyr,
     layers: [layer]
   });
 
+   map.ground.layers.add(elevationLayer)
+  
   const view = new SceneView({
     map: map,
     container: "viewDiv",
