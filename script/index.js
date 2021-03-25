@@ -188,9 +188,9 @@ require([
           NLSCSLyrs[i].outFields = ["BUILD_H", "BUILD_NO"];
           view.whenLayerView(NLSCSLyrs[i]).then(function (layerView) {
             sceneLayerView[i] = layerView;
-            if (!isMobile.any()) {
+       //     if (!isMobile.any()) {
               queryDiv.style.display = "block";
-            }
+       //     }
           });
         })
       })
