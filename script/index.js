@@ -232,11 +232,17 @@ require([
 
       var past = parseInt((pastSliderTime - new Date(2019, 6, 22, 4).getTime()) / (60 * 60 * 1000))
       //	var t = 11950013000 + 10000 * dt
-      if (FloodingLayer[dt]) {
-        debugger;
+      if (!FloodingLayer[dt]) {
+        var url = "https://winds.ncdr.nat.gov.tw/data/flood/Frame_" + dt + ".png";
+         addFloodingLayer(url, past, dt);
+      }else{
+        FloodingLayer[dt].visible = true;
       }
-      var url = "https://winds.ncdr.nat.gov.tw/data/flood/Frame_" + dt + ".png";
-      addFloodingLayer(url, past, dt);
+      if (FloodingLayer[past]){
+        FloodingLayer.visible = false;
+      }
+
+      
 
       pastSliderTime = (new Date(value.end).getTime());
     })
@@ -247,11 +253,11 @@ require([
   function addFloodingLayer(url, past, dt) {
     var pt = ((dt - 1) == 0) ? 24 : (dt - 1);
     var currLayer = view.map.findLayerById("flood" + past);
-    var grapherLayer = addPictureLayer1("flood" + dt, url);
-    map.add(grapherLayer);
-    if (currLayer) {
-      setTimeout(function () { view.map.layers.remove(currLayer); }, 500)
-    }
+    FloodingLayer[dt] = addPictureLayer1("flood" + dt, url);
+    map.add(FloodingLayer[dt]);
+   // if (currLayer) {
+    //  setTimeout(function () { view.map.layers.remove(currLayer); }, 500)
+   // }
   }
 
   function addPictureLayer1(id, picUrl) {
