@@ -1149,6 +1149,28 @@ define([
                 }).catch(error => {
                   throw  error ;
                 });
+              }, a.draw = function(ctx, picture, width, height, mapBox, pictureBox) {
+                let crossBox = this.crossRect(mapBox, pictureBox);
+                let mapDx = width / (mapBox[2] - mapBox[0]);
+                let mapDy = height / (mapBox[3] - mapBox[1]);
+        
+                let mapLeft = Math.ceil(mapDx * (crossBox[0] - mapBox[0]));
+                let mapRight = Math.ceil(mapDx * (crossBox[2] - mapBox[0]));
+                let mapTop = Math.ceil(mapDy * (mapBox[3] - crossBox[3]));
+                let mapBottom = Math.ceil(mapDy * (mapBox[3] - crossBox[1]));
+        
+                let imgWidth = picture.width;
+                let imgHeight = picture.height;
+                let imgDx = imgWidth / (pictureBox[2] - pictureBox[0]);
+                let imgDy = imgHeight / (pictureBox[3] - pictureBox[1]);
+        
+                let imgLeft = Math.ceil(imgDx * (crossBox[0] - pictureBox[0]));
+                let imgRight = Math.ceil(imgDx * (crossBox[2] - pictureBox[0]));
+                let imgTop = Math.ceil(imgDy * (pictureBox[3] - crossBox[3]));
+                let imgBottom = Math.ceil(imgDy * (pictureBox[3] - crossBox[1]));
+                ctx.clearRect(0, 0, width, height);
+                ctx.drawImage(picture, imgLeft, imgTop, imgRight - imgLeft, imgBottom - imgTop, mapLeft, mapTop, mapRight - mapLeft, mapBottom - mapTop);
+                return ctx;
               }, a.isRectCross = function(a, c) {
                 return (a[0] > c[2] || a[2] < c[0] || a[1] > c[3] || a[3] < c[1]) ?
                   false :
