@@ -1147,7 +1147,7 @@ define([
                   this._lastImageUTag = imageUTag;
                   return data;
                 }).catch(error => {
-                  throw new w('PictureLayer:image-fetch-error', 'Unable to load image: ' + f, { error: error });
+                  throw  error ;
                 });
               }, a.isRectCross = function(a, c) {
                 return (a[0] > c[2] || a[2] < c[0] || a[1] > c[3] || a[3] < c[1]) ?
