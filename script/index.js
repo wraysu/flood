@@ -239,7 +239,7 @@ require([
         FloodingLayer[dt].visible = true;
       }
       if (FloodingLayer[past]){
-        FloodingLayer.visible = false;
+        FloodingLayer[past].visible = false;
       }
 
       
