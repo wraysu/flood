@@ -1149,7 +1149,7 @@ define([
                 }).catch(error => {
                   throw new w('PictureLayer:image-fetch-error', 'Unable to load image: ' + f, { error: error });
                 });
-              }, a..isRectCross = function(a, c) {
+              }, a.isRectCross = function(a, c) {
                 return (a[0] > c[2] || a[2] < c[0] || a[1] > c[3] || a[3] < c[1]) ?
                   false :
                   true;
