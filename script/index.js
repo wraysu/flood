@@ -2,6 +2,7 @@ var pastSliderTime = 0;
 var NLSCSLyrs = [];
 let sceneLayerView = [];
 let bufferSize = 0;
+var FloodingLayer = [];
 var isMobile = {
   Android: function () {
     return navigator.userAgent.match(/Android/i);
@@ -231,7 +232,9 @@ require([
 
       var past = parseInt((pastSliderTime - new Date(2019, 6, 22, 4).getTime()) / (60 * 60 * 1000))
       //	var t = 11950013000 + 10000 * dt
-
+      if (FloodingLayer[dt]) {
+        debugger;
+      }
       var url = "https://winds.ncdr.nat.gov.tw/data/flood/Frame_" + dt + ".png";
       addFloodingLayer(url, past, dt);
 
