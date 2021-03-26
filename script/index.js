@@ -34,7 +34,7 @@ require([
   "esri/layers/WebTileLayer",
   "esri/layers/FeatureLayer",
   "esri/layers/GraphicsLayer",
-  "js/PictureLayer",
+  "js/PictureLayer1",
   "esri/layers/SceneLayer",
   "esri/geometry/support/webMercatorUtils",
   "esri/identity/IdentityManager",
