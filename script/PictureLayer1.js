@@ -145,13 +145,13 @@ define([
                 /**
                  * 做防抖节流处理，
                  * 此处不处理会导致界面卡顿
-                 */
+                 
                 if (d.pixelRatio != 1 || start - this._timer < this.debounce) {
                   return;
                 } else {
                   this._timer = start;
                 }
-        
+        */
                 return new Promise(((resolve, reject) => {
                   let data = new Image();
                   data.crossOrigin = 'anonymous';
