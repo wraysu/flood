@@ -33,7 +33,7 @@ require([
   "esri/widgets/BasemapToggle",
   "esri/layers/ElevationLayer",
   "esri/layers/WebTileLayer",
-  "js/layers/FeatureLayer",
+  "js/FeatureLayer",
   "esri/layers/GraphicsLayer",
   "js/PictureLayer1",
   "esri/layers/SceneLayer",
