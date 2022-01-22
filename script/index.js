@@ -62,7 +62,10 @@ require([
     url:
       "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/NDFD_Precipitation_v1/FeatureServer/0"
   });
-
+  
+  const layer1 = new FeatureLayer({
+    url: "https://dssmap1.ncdr.nat.gov.tw/server/rest/services/NCDR_SDE_2014/NCDR_SDE_temp/MapServer/5"
+  }) 
 
   var g_token = "Idu-9uPF_bRQWDAqo5udB8XFNwmvjt-cMIB5XJ8ICXbgBT_FRmQ_rxxyLHVVuHsplleA8Vq2RZo7UuNDbW1LBw.."
   IdentityManager.registerToken({
@@ -92,7 +95,7 @@ require([
     ground: {
             layers: [elevLyr]
           },
-    layers: [layer]
+    layers: [layer,layer1]
   });
 /*
     map.ground.when(function() {
